@@ -6,7 +6,14 @@ class Controller:
 			'track':'videos/tracks/',
 			'thumbnail':'videos/thumbnails/',
 			# 'engagement':'videos/engagements/', Moved to accounts/usage
-			'conversion':'videos/conversions/'
+			'conversion':'videos/conversions/',
+			'account': 'accounts/',
+			'tags': 'accounts/tags/',
+			'usage': 'accounts/usage/',
+			'channels': 'channels/',
+			'channels-videos': 'channels/videos',
+			'players': 'players/',
+			'status': 'status/',
 		}
 
 
