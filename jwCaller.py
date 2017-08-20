@@ -17,7 +17,7 @@ class jwCaller:
 		self.secret = account['secret']
 		self.API = jwAPI(self.key, self.secret)
 		self.videos = Controller('video', self.API)
-		self.thumnails = Controller('thumbnail', self.API)
+		self.thumbnails = Controller('thumbnail', self.API)
 		self.tracks = Controller('track', self.API)
 		self.conversions = Controller('conversion', self.API)
 		self.views = Controller('view', self.API)
