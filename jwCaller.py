@@ -11,10 +11,10 @@ import time
 
 class jwCaller:
 
-	def __init__(self,account):
+	def __init__(self,account, key, secret):
 		self.account = account
-		self.key = account['key']
-		self.secret = account['secret']
+		self.key = key
+		self.secret = secret
 		self.API = jwAPI(self.key, self.secret)
 		self.videos = Controller('video', self.API)
 		self.thumbnails = Controller('thumbnail', self.API)
@@ -24,4 +24,6 @@ class jwCaller:
 		# self.engagements = Controller('engagement', self.API) Moved to accounts/usage
 
 if __name__ == '__main__':
-	pass
+	account = accounts['corpu-customers']
+	test = jwCaller(account)
+	print(test.status)
