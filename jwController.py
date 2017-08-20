@@ -2,10 +2,10 @@ class Controller:
 	URLs = {
 			'video': 'videos/',
 			'tag': 'videos/tags/',
-			'view':'videos/views/',
+			# 'view':'videos/views/', Moved to accounts/usage
 			'track':'videos/tracks/',
 			'thumbnail':'videos/thumbnails/',
-			'engagement':'videos/engagements/',
+			# 'engagement':'videos/engagements/', Moved to accounts/usage
 			'conversion':'videos/conversions/'
 		}
 
