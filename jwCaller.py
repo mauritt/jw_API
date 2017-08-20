@@ -13,8 +13,8 @@ class jwCaller:
 
 	def __init__(self,account):
 		self.account = account
-		self.key = accounts[account]['key']
-		self.secret = accounts[account]['secret']
+		self.key = account['key']
+		self.secret = account['secret']
 		self.API = jwAPI(self.key, self.secret)
 		self.videos = Controller('video', self.API)
 		self.thumnails = Controller('thumbnail', self.API)
