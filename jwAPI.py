@@ -14,8 +14,8 @@ class jwAPI:
 		"""Sets API key and secret for a given JW account"""
 		self.api_key = key
 		self.api_secret = secret
-	
-	
+
+
 	def call(self, URL, format = 'json', **params):
 		"""Takes URL and parameters returns API response"""
 		callURL = self.createURL(URL, format, **params)
