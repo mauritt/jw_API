@@ -10,7 +10,7 @@ API_Classes = {
         'update',
         ],
     },
-'videoConversions':{
+'conversions':{
     'baseURL': 'videos/conversions/',
     'actions': [
         'create',
@@ -19,20 +19,20 @@ API_Classes = {
         'show',
         ],
     },
-'videoTags':{
+'tags':{
     'baseURL': 'videos/tags/',
     'actions': [
         'list',
         ],
     },
-'videoThumbnails':{
+'thumbnails':{
     'baseURL': 'videos/thumbnails/',
     'actions': [
         'show',
         'update',
         ],
     },
-'videoTracks':{
+'tracks':{
     'baseURL': 'videos/tracks/',
     'actions': [
         'create',

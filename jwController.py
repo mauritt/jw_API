@@ -3,13 +3,16 @@ from jwAPIClasses import API_Classes
 
 class Controller:
 
-	def __init__(self, apiClass, key, secret):
+	def __init__(self, key, secret):
 		self.API = jwAPI(key, secret)
-		self.apiClass = apiClass
-		self.URL = API_Classes[apiClass]['baseURL']
 
-	def __call__(self, action, **params):
-		if action in API_Classes[self.apiClass]['actions']:
-			URL = self.URL + action
-			req = self.API.call(URL, **params)
-			return req
+
+	def API_class(self, API_Class):
+
+		def action(action, **params):
+			if action in API_Classes[API_Class]['actions']:
+				URL = API_Classes[API_Class]['baseURL'] + action
+				req = self.API.call(URL, **params)
+				return req
+
+		return action
