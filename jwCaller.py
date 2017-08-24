@@ -13,6 +13,10 @@ class Account:
 
     delivery_URL = "https://cdn.jwplayer.com"
 
+    available_players = []
+
+
+
     def __init__(self, key, secret):
 
         self.key = key
@@ -26,6 +30,13 @@ class Account:
         self.tags = self.controller.API_class('tags')
         self.tracks = self.controller.API_class('tracks')
         self.thumbnails = self.controller.API_class('thumbnails')
+        self.players = self.controller.API_class('players')
+
+
+        for player in self.players('list')['players']:
+            available_player = (player['key'])
+            self.available_players.append(available_player)
+
 
     def get_thumbnail(self, video_key, thumb_width='720'):
         allowed_widths = [
@@ -44,5 +55,16 @@ class Account:
 
         thumb_URL = "{}/thumbs/{}-{}.jpg"
         return thumb_URL.format(self.delivery_URL, video_key, thumb_width)
+
+
+    def get_embed(self, video_key, player_key):
+        print(self.available_players)
+
+        if player_key not in self.available_players:
+            player_key = self.available_players[0]
+
+        embed_URL = "<script src='//content.jwplatform.com/players/{}-{}.js'></script>"
+
+        return embed_URL.format(video_key, player_key)
 
 
