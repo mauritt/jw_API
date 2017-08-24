@@ -1,5 +1,6 @@
 from jwAPI import jwAPI
 from jwAPIClasses import API_Classes
+import json
 
 class Controller:
 
@@ -13,6 +14,6 @@ class Controller:
 			if action in API_Classes[API_Class]['actions']:
 				URL = API_Classes[API_Class]['baseURL'] + action
 				req = self.API.call(URL, **params)
-				return req
+				return json.loads(req)
 
 		return action
