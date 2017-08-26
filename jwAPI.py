@@ -56,7 +56,6 @@ class jwAPI:
 
 	def upload(self, response, vid):
 		"""Uploads a file to JW platform"""
-		# response = json.loads(response)
 		protocol = response['link']['protocol']
 		address =  response['link']['address']
 		path = response['link']['path']
@@ -66,7 +65,7 @@ class jwAPI:
 		URL = "%s://%s%s?api_format=%s&key=%s&token=%s" % (protocol,address,path,format,key,token)
 		files = {'file': open(vid, 'rb')}
 		r = requests.post(URL, files = files)
-		print(r.text)
+		return r.text
 
 
 	@staticmethod

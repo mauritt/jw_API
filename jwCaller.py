@@ -25,15 +25,15 @@ class Account:
 
         self.controller = Controller(self.key, self.secret)
 
-        self.videos = self.controller.API_class('videos')
-        self.conversions = self.controller.API_class('conversions')
-        self.tags = self.controller.API_class('tags')
-        self.tracks = self.controller.API_class('tracks')
-        self.thumbnails = self.controller.API_class('thumbnails')
-        self.players = self.controller.API_class('players')
+        self.videos = self.controller.videos
+        self.conversions = self.controller.conversions
+        self.tags = self.controller.tags
+        self.tracks = self.controller.tracks
+        self.thumbnails = self.controller.thumbnails
+        self.players = self.controller.players
 
 
-        for player in self.players('list')['players']:
+        for player in self.players.list()['players']:
             available_player = (player['key'])
             self.available_players.append(available_player)
 
@@ -66,5 +66,11 @@ class Account:
         embed_URL = "<script src='//content.jwplatform.com/players/{}-{}.js'></script>"
 
         return embed_URL.format(video_key, player_key)
+
+
+
+
+
+
 
 
