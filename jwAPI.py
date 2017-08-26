@@ -3,6 +3,7 @@ import random
 import hashlib
 import os
 import requests
+import json
 
 
 class jwAPI:
@@ -55,7 +56,7 @@ class jwAPI:
 
 	def upload(self, response, vid):
 		"""Uploads a file to JW platform"""
-		response = json.loads(response)
+		# response = json.loads(response)
 		protocol = response['link']['protocol']
 		address =  response['link']['address']
 		path = response['link']['path']
