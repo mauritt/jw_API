@@ -1,4 +1,4 @@
-
+from operator import attrgetter
 
 class Video:
 
@@ -29,3 +29,26 @@ class Video:
             self.tags = resp['tags'].split(',')
         else:
             self.tags = None
+
+
+class Video_list:
+
+    def __init__(self, videos):
+        self.videos = videos
+
+    def sort(self, property='title', direction='asc'):
+        rev = False
+
+
+        if direction != 'asc':
+            rev = True
+
+        sorted_videos = sorted(
+                self.videos,
+                reverse=rev,
+                key=attrgetter(property)
+                )
+
+        return sorted_videos
+
+

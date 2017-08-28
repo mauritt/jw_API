@@ -1,5 +1,5 @@
 from jwController import Controller
-from jwCategories import Video
+from jwCategories import Video, Video_list
 import os
 
 
@@ -67,4 +67,4 @@ class Account:
         video_list = []
         for video in self.videos.list(**params)['videos']:
             video_list.append(Video(video))
-        return video_list
+        return Video_list(video_list)
