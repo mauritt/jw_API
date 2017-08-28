@@ -1,11 +1,7 @@
-from jwAccounts import accounts
-from jwAPI import jwAPI
 from jwController import Controller
-import json
+from jwCategories import Video
 import os
-import requests
-from pprint import PrettyPrinter
-import time
+
 
 
 
@@ -67,7 +63,8 @@ class Account:
 
         return embed_URL.format(video_key, player_key)
 
-
-
-
-
+    def get_video_list(self, **params):
+        video_list = []
+        for video in self.videos.list(**params)['videos']:
+            video_list.append(Video(video))
+        return video_list
