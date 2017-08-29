@@ -36,4 +36,12 @@ def thumbnail_list(video_key):
 
     return thumbnails
 
+def get_embed(video_key, player_key):
+
+        if player_key not in self.available_players:
+            player_key = self.available_players[0]
+
+        embed_URL = "<script src='//content.jwplatform.com/players/{}-{}.js'></script>"
+
+        return embed_URL.format(video_key, player_key)
 

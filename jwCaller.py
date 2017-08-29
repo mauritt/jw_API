@@ -34,15 +34,9 @@ class Account:
             self.available_players.append(available_player)
 
 
-    def get_embed(self, video_key, player_key):
-        print(self.available_players)
-
-        if player_key not in self.available_players:
-            player_key = self.available_players[0]
-
-        embed_URL = "<script src='//content.jwplatform.com/players/{}-{}.js'></script>"
-
-        return embed_URL.format(video_key, player_key)
+    def get_video(self, key, **params):
+        video = self.videos.show(video_key=key, **params)['video']
+        return Video(video)
 
     def get_video_list(self, **params):
         video_list = []
