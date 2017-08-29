@@ -1,4 +1,5 @@
 from operator import attrgetter
+import jwDeliveryAPI
 
 class Video:
 
@@ -29,6 +30,8 @@ class Video:
             self.tags = resp['tags'].split(',')
         else:
             self.tags = None
+
+        self.thumbnails = jwDeliveryAPI.thumbnail_list(self.key)
 
 
 class Video_list:

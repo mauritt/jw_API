@@ -34,25 +34,6 @@ class Account:
             self.available_players.append(available_player)
 
 
-    def get_thumbnail(self, video_key, thumb_width='720'):
-        allowed_widths = [
-            '40',
-            '120',
-            '320',
-            '480',
-            '640',
-            '720',
-            '1280'
-            '1920'
-            ]
-
-        if thumb_width not in allowed_widths:
-            thumb_width = '720'
-
-        thumb_URL = "{}/thumbs/{}-{}.jpg"
-        return thumb_URL.format(self.delivery_URL, video_key, thumb_width)
-
-
     def get_embed(self, video_key, player_key):
         print(self.available_players)
 
