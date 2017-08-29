@@ -14,10 +14,10 @@ class Controller:
         self.API = jwAPI(key, secret)
 
         self.videos = self.API_class('videos/',API_Classes['videos']['actions'], self)
-        self.thumbnails = self.API_class('videos/thumbnails',API_Classes['thumbnails']['actions'], self)
-        self.tags = self.API_class('videos/tags',API_Classes['tags']['actions'], self)
-        self.conversions = self.API_class('videos/conversions',API_Classes['conversions']['actions'], self)
-        self.tracks = self.API_class('videos/tracks',API_Classes['tracks']['actions'], self)
+        self.thumbnails = self.API_class('videos/thumbnails/',API_Classes['thumbnails']['actions'], self)
+        self.tags = self.API_class('videos/tags/',API_Classes['tags']['actions'], self)
+        self.conversions = self.API_class('videos/conversions/',API_Classes['conversions']['actions'], self)
+        self.tracks = self.API_class('videos/tracks/',API_Classes['tracks']['actions'], self)
         self.players = self.API_class('players/',API_Classes['players']['actions'], self)
 
 
