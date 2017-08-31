@@ -85,7 +85,6 @@ class Controller:
             if self.controller.remaining_calls == 0 and self.controller.reset > int(time()):
                 sleep_time = self.controller.reset - int(time())
                 sleep(sleep_time)
-                print('Sleeping: ' + str(sleep_time))
 
         def rate_recorder(self, resp):
             self.controller.remaining_calls = resp['rate_limit']['remaining']
