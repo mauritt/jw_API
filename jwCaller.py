@@ -28,6 +28,8 @@ class Account:
         self.thumbnails = self.controller.thumbnails
         self.players = self.controller.players
 
+        self.uploader = self.controller.uploader
+
 
         for player in self.players.list()['players']:
             available_player = (player['key'])
@@ -43,3 +45,42 @@ class Account:
         for video in self.videos.list(**params)['videos']:
             video_list.append(Video(video))
         return Video_list(video_list)
+
+    def get_upload_URL(self,category, update=False, **params):
+
+        if category == 'video':
+            controller = self.videos
+        elif category == 'thumbnail':
+            controller = self.thumbnails
+        elif category == 'track':
+            controller = self.tracks
+        else:
+            URL = False
+
+        if update:
+            update_response = controller.update(**params)
+        else:
+            update_response = controller.create(**params)
+
+        print(update_response)
+        URL = self.uploader.get_upload_URL(update_response)
+        return URL
+
+    def create_video(self, file, **params):
+        URL = self.get_upload_URL('video', **params)
+        self.uploader.upload_file(URL, file)
+        return
+
+
+
+
+
+
+
+
+
+
+
+
+
+

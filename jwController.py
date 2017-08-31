@@ -20,6 +20,9 @@ class Controller:
         self.tracks = self.API_class('videos/tracks/',API_Classes['tracks']['actions'], self)
         self.players = self.API_class('players/',API_Classes['players']['actions'], self)
 
+        self.uploader = self.Uploader(self)
+
+
 
     class API_class:
 
@@ -37,7 +40,6 @@ class Controller:
 
             if "show" in allowed_actions:
                 self.show = self.action(baseURL, 'show', self.API)
-
             if "create" in allowed_actions:
                 self.create = self.action(baseURL, 'create', self.API)
 
@@ -47,6 +49,7 @@ class Controller:
             if "update" in allowed_actions:
                 self.update = self.action(baseURL, 'update', self.API)
 
+
     class API_action:
 
         def __init__(self, baseURL, action, API):
@@ -54,7 +57,7 @@ class Controller:
             self.action = action
             self.baseURL = baseURL
 
-        def __call__(self, file=False, **params):
+        def __call__(self, **params):
 
 
             URL = "{}{}".format(self.baseURL, self.action)
@@ -63,10 +66,21 @@ class Controller:
 
             res =  json.loads(req)
 
-            if file and 'file_name' in params.keys():
-                res = self.API.upload(res, file)
-
             return res
+
+
+    class Uploader:
+
+        def __init__(self, controller):
+
+            self.controller = controller
+            self.API = controller.API
+
+        def get_upload_URL(self, res):
+            return self.API.create_upload_URL(res)
+
+        def upload_file(self, URL, file):
+            self.API.upload(URL, file)
 
 
     class errorHandler:

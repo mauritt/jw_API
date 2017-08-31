@@ -54,8 +54,8 @@ class jwAPI:
 
 		return {'baseURL': baseURL, 'payload':payload}
 
-	def upload(self, response, vid):
-		"""Uploads a file to JW platform"""
+	def create_upload_URL(self, response):
+		"""Takes update response and formats a URL for uploading"""
 		protocol = response['link']['protocol']
 		address =  response['link']['address']
 		path = response['link']['path']
@@ -63,7 +63,12 @@ class jwAPI:
 		key = response['link']['query']['key']
 		token = response['link']['query']['token']
 		URL = "%s://%s%s?api_format=%s&key=%s&token=%s" % (protocol,address,path,format,key,token)
-		files = {'file': open(vid, 'rb')}
+		return URL
+
+
+	def upload(self, URL, file):
+		"""Uploads a file to JW platform"""
+		files = {'file': open(file, 'rb')}
 		r = requests.post(URL, files = files)
 		return r.text
 
