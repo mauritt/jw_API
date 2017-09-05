@@ -1,5 +1,6 @@
 from operator import attrgetter
 import jwDeliveryAPI
+from datetime import datetime
 
 class Video:
 
@@ -9,8 +10,10 @@ class Video:
         self.key = resp['key']
         self.title = resp['title']
         self.date = resp['date']
+        self.date_as_datetime = datetime.fromtimestamp(int(self.date)).strftime('%m-%d-%Y')
         self.description = resp['description']
         self.duration = resp['duration']
+        self.duration_as_time = self.duration.replace('.', ':')
         self.media_type = resp['mediatype']
         self.size = resp['size']
         self.source_format = resp['sourceformat']
@@ -32,6 +35,8 @@ class Video:
             self.tags = None
 
         self.thumbnails = jwDeliveryAPI.thumbnail_list(self.key)
+
+
 
 
 class Video_list:
