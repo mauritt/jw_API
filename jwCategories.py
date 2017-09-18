@@ -60,3 +60,29 @@ class Video_list:
         return sorted_videos
 
 
+class Conversion:
+
+    def __init__(self, resp):
+        self.status = resp['status']
+        self.mediatype = resp['mediatype']
+        self.height = resp['height']
+        self.width = resp['width']
+        self.filesize = resp['filesize']
+        self.key = resp['key']
+        self.duration = resp['duration']
+        self.template = Template(resp['template'])
+        self.link = "{protocol}://{address}{path}".format(**resp['link'])
+
+
+
+class Template:
+
+    def __init__(self, resp):
+        self.required = resp['required']
+        self.format = {
+            'name': resp['format']['name'],
+            'key': resp['format']['key']
+            }
+        self.id = resp['id']
+        self.key = resp['key']
+        self.name = resp['name']

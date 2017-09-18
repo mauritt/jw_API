@@ -1,5 +1,5 @@
 from jwController import Controller
-from jwCategories import Video, Video_list
+from jwCategories import Video, Video_list, Conversion
 import os
 
 
@@ -65,6 +65,13 @@ class Account:
         print(update_response)
         URL = self.uploader.get_upload_URL(update_response)
         return URL
+
+    def get_conversions(self, key):
+        conversions = []
+        conversion_list = self.conversions.list(video_key=key)['conversions']
+        for conversion in conversion_list:
+            conversions.append(Conversion(conversion))
+        return conversions
 
     def create_video(self, file, **params):
         URL = self.get_upload_URL('video', **params)

@@ -101,8 +101,9 @@ class Controller:
                 sleep(sleep_time)
 
         def rate_recorder(self, resp):
-            self.controller.remaining_calls = resp['rate_limit']['remaining']
-            self.controller.reset = resp['rate_limit']['reset']
+            if 'rate_limit' in resp.keys():
+                self.controller.remaining_calls = resp['rate_limit']['remaining']
+                self.controller.reset = resp['rate_limit']['reset']
 
             return
 
