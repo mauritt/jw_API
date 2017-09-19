@@ -1,5 +1,5 @@
 from jwController import Controller
-from jwCategories import Video, Video_list, Conversion
+from jwCategories import Video, Video_list, Conversion, Track
 import os
 
 
@@ -72,6 +72,13 @@ class Account:
         for conversion in conversion_list:
             conversions.append(Conversion(conversion))
         return conversions
+
+    def get_tracks(self,key):
+        tracks=[]
+        tracks_list = self.tracks.list(video_key=key)['tracks']
+        for track in tracks_list:
+            tracks.append(Track(track))
+        return tracks
 
     def create_video(self, file, **params):
         URL = self.get_upload_URL('video', **params)

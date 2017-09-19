@@ -86,3 +86,17 @@ class Template:
         self.id = resp['id']
         self.key = resp['key']
         self.name = resp['name']
+
+class Track:
+
+    def __init__(self, resp):
+        self.status = resp['status']
+        self.kind = resp['kind']
+        self.error = resp['error']
+        self.language = resp['language']
+        self.key = resp['key']
+        self.format = resp['format']
+        self.position = resp['position']
+        self.label = resp['label']
+        self.md5 = resp['md5']
+        self.link = "{protocol}://{address}{path}".format(**resp['link'])
